@@ -6,8 +6,6 @@ RUN apt-get -y install \
     nano \
     openjdk-7-jre-headless
 
-RUN echo "export TERM=xterm" >> /etc/bash.bashrc
-
 RUN pecl install xdebug-beta \
     && docker-php-ext-enable xdebug \
     && echo "xdebug.remote_enable=1" >> /usr/local/etc/php/php.ini \
@@ -21,3 +19,5 @@ ADD docker/phantomjs /usr/local/bin/phantomjs
 # Selenium for js test
 ADD docker/selenium-server-standalone-2.52.0.jar /opt/selenium-server-standalone.jar
 
+# terminal env for nano
+ENV TERM xterm
