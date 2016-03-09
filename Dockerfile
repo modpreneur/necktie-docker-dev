@@ -11,7 +11,7 @@ RUN pecl install xdebug-beta \
     && echo "xdebug.remote_enable=1" >> /usr/local/etc/php/php.ini \
     && echo "xdebug.idekey=PHPSTORM" >> /usr/local/etc/php/php.ini \
     && echo "xdebug.remote_connect_back=1" >> /usr/local/etc/php/php.ini \
-    && echo "alias composer=\"php --enable-bcmath -n -d extension=mbstring.so -d extension=zip.so -d extension=bcmath.so /usr/bin/composer\"" >> /etc/bash.bashrc
+    && echo "alias composer=\"php -n -d extension=mbstring.so -d extension=zip.so -d extension=bcmath.so /usr/bin/composer\"" >> /etc/bash.bashrc
 
 # Phantomjs for frontend testing
 ADD docker/phantomjs /usr/local/bin/phantomjs
