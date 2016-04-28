@@ -5,9 +5,9 @@ MAINTAINER Martin Kolek <kolek@modpreneur.com>
 RUN apt-get -y install \
     nano \
     openjdk-7-jre-headless \
-    phpunit
-
-RUN composer global require codeception/codeception \
+    phpunit \
+    && docker-php-ext-install pcntl \
+    && composer global require codeception/codeception \
     && echo "alias codecept=\"php /var/app/vendor/codeception/codeception/codecept\"" >> /etc/bash.bashrc \
     && pecl install xdebug \
     && docker-php-ext-enable xdebug \
@@ -25,6 +25,3 @@ COPY docker/selenium-server-standalone-2.53.0.jar /opt/selenium-server-standalon
 
 # terminal env for nano
 ENV TERM xterm
-
-RUN chmod +x ./docker/dev/entrypoint.sh
-ENTRYPOINT ["sh", "./docker/dev/entrypoint.sh", "service postfix start"]
