@@ -5,8 +5,8 @@ MAINTAINER Martin Kolek <kolek@modpreneur.com>
 RUN apt-get -y install \
     nano \
     openjdk-7-jre-headless \
-    phpunit \
     && docker-php-ext-install pcntl \
+    && composer global require phpunit/phpunit \
     && composer global require codeception/codeception \
     && echo "alias codecept=\"php /var/app/vendor/codeception/codeception/codecept\"" >> /etc/bash.bashrc \
     && pecl install xdebug \
@@ -21,7 +21,9 @@ RUN apt-get -y install \
 COPY docker/phantomjs /usr/local/bin/phantomjs
 
 # Selenium for js test
-COPY docker/selenium-server-standalone-2.53.0.jar /opt/selenium-server-standalone.jar
+COPY docker/selenium-server-standalone-2.53.1.jar /opt/selenium-server-standalone.jar
 
 # terminal env for nano
 ENV TERM xterm
+
+RUN echo "modpreneur/necktie-dev:0.4.7" >> /home/versions
