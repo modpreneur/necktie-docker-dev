@@ -26,4 +26,4 @@ COPY docker/selenium-server-standalone-2.53.1.jar /opt/selenium-server-standalon
 # terminal env for nano
 ENV TERM xterm
 
-RUN echo "modpreneur/necktie-dev:1.0" >> /home/versions
+RUN echo "modpreneur/necktie-dev:1.0.1" >> /home/versions
