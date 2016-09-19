@@ -10,6 +10,7 @@ RUN apt-get -y install \
     && composer global require phpunit/phpunit \
     && composer global require codeception/codeception \
     && echo "alias codecept=\"php /var/app/vendor/codeception/codeception/codecept\"" >> /etc/bash.bashrc \
+    && npm -g install eslint eslint-plugin-react \
     && pecl install xdebug \
     && docker-php-ext-enable xdebug \
     && echo "xdebug.remote_enable=1" >> /usr/local/etc/php/php.ini \
@@ -26,4 +27,4 @@ COPY docker/selenium-server-standalone-2.53.1.jar /opt/selenium-server-standalon
 # terminal env for nano
 ENV TERM xterm
 
-RUN echo "modpreneur/necktie-dev:1.0.4" >> /home/versions
+RUN echo "modpreneur/necktie-dev:1.0.5" >> /home/versions
