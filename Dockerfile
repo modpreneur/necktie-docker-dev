@@ -6,6 +6,7 @@ RUN apt-get -y install \
     nano \
     openjdk-7-jre-headless \
     ant \
+    && echo "max_execution_time=60" >> /usr/local/etc/php/php.ini \
     && docker-php-ext-install pcntl \
     && composer global require phpunit/phpunit \
     && composer global require codeception/codeception \
@@ -27,4 +28,4 @@ COPY docker/selenium-server-standalone-2.53.1.jar /opt/selenium-server-standalon
 # terminal env for nano
 ENV TERM xterm
 
-RUN echo "modpreneur/necktie-dev:1.0.6" >> /home/versions
+RUN echo "modpreneur/necktie-dev:1.0.7" >> /home/versions
