@@ -4,8 +4,9 @@ MAINTAINER Martin Kolek <kolek@modpreneur.com>
 
 RUN apt-get -y install \
     nano \
-    openjdk-7-jre-headless \
+    openjdk-7-jdk \
     ant \
+    parallel \
     && echo "max_execution_time=60" >> /usr/local/etc/php/php.ini \
     && docker-php-ext-install pcntl \
     && composer global require phpunit/phpunit \
@@ -28,4 +29,4 @@ COPY docker/selenium-server-standalone-2.53.1.jar /opt/selenium-server-standalon
 # terminal env for nano
 ENV TERM xterm
 
-RUN echo "modpreneur/necktie-dev:1.0.7" >> /home/versions
+RUN echo "modpreneur/necktie-dev:1.0.9" >> /home/versions
