@@ -21,7 +21,7 @@ RUN apt-get -y install \
     && echo "xdebug.profiler_enable=0" >> /usr/local/etc/php/php.ini \
     && echo "xdebug.profiler_output_dir=/var/app/var/xdebug/" >> /usr/local/etc/php/php.ini \
     && echo "xdebug.profiler_enable_trigger=1" >> /usr/local/etc/php/php.ini \
-    && echo "alias composer=\"php -n -d extension=mbstring.so -d extension=zip.so -d extension=bcmath.so /usr/bin/composer\"" >> /etc/bash.bashrc
+    && echo "alias composer=\"php -n -d extension=mbstring.so -d memory_limit=2048M extension=zip.so -d extension=bcmath.so /usr/bin/composer\"" >> /etc/bash.bashrc
 
 # Selenium for js test
 COPY docker/selenium-server-standalone-2.53.1.jar /opt/selenium-server-standalone.jar
@@ -29,4 +29,4 @@ COPY docker/selenium-server-standalone-2.53.1.jar /opt/selenium-server-standalon
 # terminal env for nano
 ENV TERM xterm
 
-RUN echo "modpreneur/necktie-dev:1.0.9" >> /home/versions
+RUN echo "modpreneur/necktie-dev:1.0.10" >> /home/versions
