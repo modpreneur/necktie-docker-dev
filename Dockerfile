@@ -21,7 +21,7 @@ RUN apt-get -y install \
     && echo "xdebug.profiler_enable=0" >> /usr/local/etc/php/php.ini \
     && echo "xdebug.profiler_output_dir=/var/app/var/xdebug/" >> /usr/local/etc/php/php.ini \
     && echo "xdebug.profiler_enable_trigger=1" >> /usr/local/etc/php/php.ini \
-    && echo "alias composer=\"php -n -d memory_limit=2048M -d extension=bcmath.so /usr/bin/composer\"" >> /etc/bash.bashrc
+    && echo "alias composer=\"php -n -d memory_limit=2048M -d extension=bcmath.so -d extension=zip.so /usr/bin/composer\"" >> /etc/bash.bashrc
 
 ENV BLACKFIRE_CLIENT_ID 86868e87-ef71-4d80-b099-00eec1203f70 \
     && BLACKFIRE_CLIENT_TOKEN 078a0dfe33c4736f9636c2f304969e55f47034cd83d47b41f8acb68891021372 \
@@ -37,4 +37,4 @@ RUN version=$(php -r "echo PHP_MAJOR_VERSION.PHP_MINOR_VERSION;") \
 # terminal env for nano
 ENV TERM xterm
 
-RUN echo "modpreneur/necktie-dev:1.0.11" >> /home/versions
+RUN echo "modpreneur/necktie-dev:1.0.12" >> /home/versions
