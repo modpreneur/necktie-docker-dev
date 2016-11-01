@@ -2,16 +2,21 @@ FROM modpreneur/necktie
 
 MAINTAINER Martin Kolek <kolek@modpreneur.com>
 
-RUN apt-get -y install \
+RUN apt-get update && apt-get -y install \
     nano \
     openjdk-7-jdk \
     ant \
     parallel \
     && echo "max_execution_time=60" >> /usr/local/etc/php/php.ini \
     && docker-php-ext-install pcntl \
+    && curl -sL https://deb.nodesource.com/setup_6.x | bash - \
+    && apt-get install -y nodejs \
+    && npm install -g less \
+    && npm install -g webpack  --save-dev \
+    && npm install -g uglifycss \
     && composer global require phpunit/phpunit \
     && composer global require codeception/codeception \
-    && echo "alias codecept=\"php -n -d extension=pdo_pgsql.so -d extension=pdo_mysql.so /var/app/vendor/codeception/codeception/codecept\"" >> /etc/bash.bashrc \
+    && echo "alias codecept=\"php -n -d extension=pdo_pgsql.so -d extension=pdo_mysql.so -d extension=apcu.so /var/app/vendor/codeception/codeception/codecept\"" >> /etc/bash.bashrc \
     && npm -g install eslint eslint-plugin-react \
     && pecl install xdebug \
     && docker-php-ext-enable xdebug \
@@ -37,4 +42,4 @@ RUN version=$(php -r "echo PHP_MAJOR_VERSION.PHP_MINOR_VERSION;") \
 # terminal env for nano
 ENV TERM xterm
 
-RUN echo "modpreneur/necktie-dev:1.0.12" >> /home/versions
+RUN echo "modpreneur/necktie-dev:1.0.13" >> /home/versions
