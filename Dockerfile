@@ -16,7 +16,7 @@ RUN apt-get update && apt-get -y install \
     && npm install -g uglifycss \
     && composer global require phpunit/phpunit \
     && composer global require codeception/codeception \
-    && echo "alias codecept=\"php -n -d extension=pdo_pgsql.so -d extension=pdo_mysql.so -d extension=apcu.so /var/app/vendor/codeception/codeception/codecept\"" >> /etc/bash.bashrc \
+    && echo "alias codecept=\"php -n -d extension=pdo_pgsql.so -d extension=pdo_mysql.so -d extension=apcu.so -d extension=apc.so /var/app/vendor/codeception/codeception/codecept\"" >> /etc/bash.bashrc \
     && npm -g install eslint eslint-plugin-react \
     && pecl install xdebug \
     && docker-php-ext-enable xdebug \
@@ -42,4 +42,4 @@ RUN version=$(php -r "echo PHP_MAJOR_VERSION.PHP_MINOR_VERSION;") \
 # terminal env for nano
 ENV TERM xterm
 
-RUN echo "modpreneur/necktie-dev:1.0.13" >> /home/versions
+RUN echo "modpreneur/necktie-dev:1.0.14" >> /home/versions
