@@ -42,4 +42,4 @@ RUN version=$(php -r "echo PHP_MAJOR_VERSION.PHP_MINOR_VERSION;") \
 # terminal env for nano
 ENV TERM xterm
 
-RUN echo "modpreneur/necktie-dev:1.0.14" >> /home/versions
+RUN echo "modpreneur/necktie-dev:1.0.15" >> /home/versions
