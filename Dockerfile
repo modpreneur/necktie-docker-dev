@@ -14,6 +14,7 @@ RUN apt-get update && apt-get -y install \
     && npm install -g less \
     && npm install -g webpack  --save-dev \
     && npm install -g uglifycss \
+    && composer global require "hirak/prestissimo:^0.3" \
     && composer global require phpunit/phpunit \
     && composer global require codeception/codeception \
     && echo "alias codecept=\"php -n -d extension=pdo_pgsql.so -d extension=pdo_mysql.so -d extension=apcu.so -d extension=apc.so /var/app/vendor/codeception/codeception/codecept\"" >> /etc/bash.bashrc \
